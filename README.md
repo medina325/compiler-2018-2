@@ -17,12 +17,12 @@
  * Documentar o conteúdo da disciplina.
  
 #### Sobre a disciplina:
- * Nome da disciplina: [Compiladores I](URL)
+ * Nome da disciplina: Compiladores I
  * Professora: Bianca de Almeida Santos
  * Semestre: 2018.2
  * Discente 01: Gabriel Medina Braga (medina_cdz@hotmail.com)
  * Discente 02: Mário de Araújo Carvalho (mariodearaujocarvalho@gmail.com)
- * GitHub: [https://github.com/MarioDeAraujoCarvalho](https://github.com/MarioDeAraujoCarvalho)
+ * GitHub: [https://github.com/MarioDeAraujoCarvalho](https://github.com/MarioDeAraujoCarvalho), [https://github.com/medina325](https://github.com/medina325)
  * Unidade: UFMS - FACOM
 
 # Análise Léxica
