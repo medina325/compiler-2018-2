@@ -1,0 +1,49 @@
+GRAMÁTICA CORRIGÍDA E LL1
+
+1. Program → MainClass (ClassDeclaration) ∗ EOF
+
+2. MainClass → class ID { public static void main (String[ ] ID) {Statement } }
+
+3. ClassDeclaration → 
+class ID (extends ID)? { (VarDeclaration) ∗ (MethodDeclaration) ∗
+}
+
+4. VarDeclaration → Type ID ;
+
+5. MethodDeclaration → public Type ID ( (Type ID (, Type ID) ∗ )?){ (VarDeclaration)*(Statement)∗ return Expression ; }
+
+6. Type → int T_ | boolean | ID
+
+6.1. T_ -> [] | Epsilon
+
+7. Statement →  { (Statement) * }
+| if ( Expression ) Statement else Statement
+| while ( Expression ) Statement
+| System.out.println ( Expression ) ;
+| ID S_
+
+8. S_  →  = Expression ;
+| [ Expression ] = Expression ;
+
+9. Expression →
+INTEGER_LITERAL E_
+| true E_
+| false E_
+| ID E_
+| this E_
+| new E_ID
+| ! Expression E_
+| ( Expression ) E_
+
+10. E_ID → int [ Expression ] E_
+| ID ( ) E_
+
+11. E_ → Op Expression  E_
+|  [ Expression ] E_
+|  . E_PONTO
+| epsilon
+
+12. E_PONTO →  length E_
+| ID ( ( Expression (, Expression ) ∗ )?) E_
+
+13. Op → && | < | > | == | != | + | - | * | /

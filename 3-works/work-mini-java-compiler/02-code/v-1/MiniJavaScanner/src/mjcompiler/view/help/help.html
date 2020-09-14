@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MiniJava Compiler</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <span style="font-weight: bold; text-decoration: underline;">HELP MINIJAVA COMPILER 0.0.1</span>
+        <br>
+        <strong>Análise Léxica</strong>
+        <p>
+        1. DESCRIÇÃO <br>
+        A primeira etapa da implementação do trabalho prático de nossa disciplina consiste na implementação do analisador léxico para a linguagem de programação MiniJava com algumas extensões. MiniJava é um subconjunto de Java e seu analisador léxico deve ser capaz de reconhecer e retornar os tokens da linguagem especificados neste documento e que, posteriormente, serão símbolos terminais da gramática que especificará as construções aceitas pela linguagem.<br>
+        Tokens:<br>
+        1. Identificadores (ID): Uma sequência de letras, dígitos e underscores, começando sempre com uma letra. A linguagem distingue letras maiúsculas e minúsculas;<br>
+        2. Números inteiros (INTEGER_LITERAL): uma sequência de dígitos decimais, que denotam o número inteiro correspondente;<br>
+        3. Operadores (OP): &&, <, >, +, −, ∗, /, =, ==, ! = e !;<br>
+        4. Separadores (SEP): (, ), [, ], {, }, ;, . e ,;<br>
+        5. Palavras reservadas: boolean, class, else, extends, false, if, int, length, main, new, public, return, static, String, System.out.println, this, true, void e while;<br>
+        6. Comentários: os comentários devem ser ignorados. Existem dois tipos: comentário de linha (iniciado com // e indo até o final da linha) e comentário de bloco (iniciado com /∗ e encerrado em ∗/ sem aninhamentos);<br>
+        7. Espaços em branco: devem ser ignorados. São eles \n, \t, \r e \f.<br>
+          
+        2. ESPECIFICAÇÕES<br>
+        • O trabalho prático poderá ser realizado em grupos de, no máximo, 3 alunos sem exceções.<br>
+        • A linguagem Java deverá ser utilizada na implementação do trabalho.<br>
+        • A entrega de todas as etapas deve ser realizada até o dia: 03/12/2018.<br>
+        </p>
+          <strong>Análise Sintática e Interface Gráfica</strong>
+        <p>
+        1 .DESCRIÇÃO<br>
+        A segunda parte do trabalho prático de nossa disciplina consiste na implementação do analisador
+        sintático descendente preditivo para a linguagem MiniJava modificada, cuja gramática se encontra
+        ao final desse texto, e de uma interface gráfica para o nosso ambiente de compilação.<br>
+        O analisador sintático deve ser capaz de percorrer o programa fonte, detectar e reportar er-
+        ros. Seu programa não precisa utilizar técnicas de recuperação de erros, ou seja, ao primeiro erro
+        detectado, o programa deve parar a execução após reportá-lo.<br>
+        A interface gráfica desenvolvida servirá para facilitar o processo de edição e compilação do
+        arquivo fonte (o qual deve ter a extensão .mj).<br>
+        Ela deverá fornecer, pelo menos, as seguintes funcionalidades:<br>
+
+        Uma área de texto para exibir o código fonte do programa;<br>
+        Uma área de texto para exibir mensagens do compilador;<br>
+        Opções para abrir e salvar arquivos, bem como para criar um novo;<br>
+        Opções para compilar o arquivo aberto.<br>
+
+        2. ESPECIFICAÇÕES
+        • O trabalho prático poderá ser realizado em grupos de, no máximo, 3 alunos sem exceções.<br>
+        • A linguagem Java deverá ser utilizada na implementação do trabalho, sugere-se também a
+        utilização do IDE NetBeans.<br>
+        • A entrega de todas as etapas deve ser realizada até o dia: 03/12/2018.<br>
+        • Qualquer parte do trabalho copiada ou “fortemente inspirada” nos trabalhos de outros grupos
+        receberão nota zero.<br>
+        • Entrevistas podem ser realizadas com todos os grupos.<br>
+
+        3. GRAMÁTICA<br>
+        A gramática seguinte utiliza as notações ( N ) ∗ para representar 0 ou mais repetições de N e a notação
+        ( N )? para representar 0 ou 1 repetição de N. Os tokens da linguagem são representados em negrito
+        e os não-terminais em itálico.<br>
+        
+        1. Program → MainClass (ClassDeclaration) ∗ EOF<br>
+        2. MainClass → class ID { public static void main (String[ ] ID){ Statement } }<br>
+        3. ClassDeclaration → class ID (extends ID)? { (VarDeclaration) ∗ (MethodDeclaration) ∗}<br>
+        4. VarDeclaration → Type ID ;<br>
+        5. MethodDeclaration → public Type ID ( (Type ID (, Type ID) ∗ )?(Statement) ∗ return Expression ; }<br>
+        6. Type → int[] | boolean | int | ID<br>
+        7. Statement → { (Statement) ∗ }<br>
+        | if ( Expression ) Statement else Statement<br>
+        | while ( Expression ) Statement<br>
+        | System.out.println ( Expression ) ;<br>
+        | ID = Expression ;<br>
+        | ID [ Expression ] = Expression ;<br>
+        8. Expression → Expression Op Expression<br>
+        | Expression [ Expression ]<br>
+        | Expression . length<br>
+        | Expression . ID ( ( Expression (, Expression ) ∗ )?<br>
+        | INTEGER_LITERAL<br>
+        | true<br>
+        | false<br>
+        | ID<br>
+        | this<br>
+        | new int [ Expression ]<br>
+        | new ID ( )<br>
+        | ! Expression<br>
+        | ( Expression )<br>
+        9. Op → && | &lt; | &gt; | == | != | + | - | * | /<br>
+        
+        </p>
+         <strong>Análise Semântica</strong>
+        <p>
+        1. DESCRIÇÃO
+        A terceira parte do trabalho prático de nossa disciplina consiste na implementação de algumas fun-
+        cionalidades para verificação semântica da linguagem de programação alvo de nossos estudos, a
+        MiniJava modificada. As funcionalidades que devem ser implementadas deverão ser realizadas con-
+        comitantemente à análise sintática (com o auxílio da tabela de símbolos), sendo, assim, um processo
+        guiado pela sintaxe.<br>
+        As seguintes atividades devem ser realizadas:<br>
+        • Verificação de declaração de classes;<br>
+        • Verificação de declaração de variáveis e métodos;<br>
+        • Verificação de tipos em comandos de atribuição e chamadas de métodos.<br>
+
+        2. ESPECIFICAÇÕES<br>
+        • O trabalho prático poderá ser realizado em grupos de, no máximo, 3 alunos sem exceções.<br>
+        • A linguagem Java deverá ser utilizada na implementação do trabalho.<br>
+        • A entrega de todas as etapas deve ser realizada até o dia: 03/12/2018.<br>
+
+        3. AVALIAÇÃO<br>
+        O trabalho prático será avaliado utilizando os seguintes critérios:<br>
+        • Trabalhos que não compilarem receberão nota zero.<br>
+        • Um conjunto contendo numT estes programas de teste será executado, com possíveis erros, e
+        para cada teste seu programa deve emitir mensagens de erro (se houver) e, ao final, informar o
+        término do processo de compilação.<br>
+        • A cada teste para o qual o seu compilador executar corretamente, o grupo receberá pontuação
+        equivalente numT 1 estes ∗ 10. Executar corretamente significa terminar o percurso do programa
+        de entrada e emitir mensagens para todos os erros do programa, se houver.<br>
+        • Execuções parcialmente corretas receberão uma porcentagem da nota total.<br>
+        • Se o seu programa travar na execução de um teste, a pontuação para tal teste será zerada.<br>
+        </p>
+        <strong>Exemplo de um código em MiniJava</strong>
+<pre>
+class MyClass {<br>
+    public static void main(String[] ID) {<br>
+        // Comments 1<br>
+        if(x > 10 && y == 30){<br>
+        // TODO<br>
+        } else {<br>
+        // TODO<br>
+        }<br>
+    }<br>
+}<br>
+</pre>
+    </body>
+</html>
