@@ -5,7 +5,7 @@
 ## Informações
 
 **Repositório da disciplina de Compiladores I, ufms 2018-2.**
-**Sobre este repositório:** m
+**Sobre este repositório:**
 
 #### Oque é?
  * Repositório dos códigos fontes da disciplina, materias disponibilizados em sala, slides e trabalhos.
